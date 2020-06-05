@@ -5,9 +5,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript" src="formCheck.js"></script>
 </head>
 <body>
-	<form action="joinOK.jsp" method="post">
+	<form action="joinOK.jsp" method="post" onsubmit="return joinCheck(this)">
 		<input type="hidden" name="ip" value="<%=request.getRemoteAddr()%>"/>
 		
 		<table width="400" align="center">
@@ -21,6 +22,13 @@
 			<tr>
 				<td width="200" align="center">Password</td>
 				<td width="200" align="center"><input type="password" name="password"></td>
+			</tr>
+			
+			<tr>
+				<td width="200" align="center">P/W Check</td>
+				<td width="200" align="center"><input type="password" name="check">
+				<p id="change_text">Input Password</p>
+				</td>
 			</tr>
 			
 			<tr>

@@ -38,21 +38,24 @@ DBUtil.close(conn);
 <table width="300">
 	<tr><th colspan="2">User Information</th></tr>
 	<tr>
-	<td align="center">Name</td>
-	<td align="center"><%=name%></td>
+		<td align="center">Name</td>
+		<td align="center"><%=name%></td>
 	</tr>
 	<tr>
-	<td align="center">Age</td>
-	<td align="center"><%=age%></td>
+		<td align="center">Age</td>
+		<td align="center"><%=age%></td>
 	</tr>
 	<tr>
-	<td align="center">Point</td>
-	<td align="center"><%=point%></td>
+		<td align="center">Point</td>
+		<td align="center"><%=point%></td>
 	</tr>
-
+	<tr>
+		<td align="center"><input type="button" value="Modify user info" onclick="location.href='modifyForm.jsp'"/></td>
+		<td align="center"><input type="button" value="Sign out" onclick="location.href='main.jsp?logout=yes'"/></td>
+	</tr>
 
 
 </table>
-<input type="button" value="Sign Out" onclick="location.href='main.jsp?logout=yes'"/>
+
 </body>
 </html>

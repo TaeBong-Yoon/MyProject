@@ -1,3 +1,4 @@
+<%@page import="com.work.web.loginCheck"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="com.work.web.DBUtil"%>
 <%@page import="java.sql.Connection"%>
@@ -18,6 +19,16 @@ String name = request.getParameter("name");
 int age =Integer.parseInt(request.getParameter("age"));
 String ip = request.getParameter("ip");
 
+if(loginCheck.check(id)){
+	out.println("<script>");
+	out.println("alert('There is same ID already exists. Choose another ID')");
+	out.println("location.href='joinPage.jsp'");
+	out.println("</script>");
+}else{
+%>
+
+<%
+
 Connection conn = DBUtil.getMySQLConnection();//db
 
 String sql = "INSERT INTO member(id,password,name,age,point,ip) VALUES(?,?,?,?,?,?)";
@@ -34,6 +45,11 @@ pstmt.executeUpdate();
 DBUtil.close(pstmt);
 DBUtil.close(conn);
 
+out.println("<script>");
+out.println("alert('Sign Up Success!')");
+out.println("location.href='main.jsp'");
+out.println("</script>");
+}
 
 %>
 

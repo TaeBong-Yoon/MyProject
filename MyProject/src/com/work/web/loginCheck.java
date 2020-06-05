@@ -7,7 +7,7 @@ import java.sql.SQLException;
 
 public class loginCheck {
 
-	public static boolean pass(String id, String password) {
+	public static int pass(String id, String password) {
 		String pass;
 		
 		Connection conn = DBUtil.getMySQLConnection();
@@ -23,12 +23,35 @@ public class loginCheck {
 			DBUtil.close(pstmt);
 			DBUtil.close(conn);
 			if(pass.equals(password)) {
-				return true;
+				return 1;
+			} else if(!password.equals(pass)){
+				return 0;
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		return 2;
+	}
+	
+	public static boolean check(String id) {
+		Connection conn = DBUtil.getMySQLConnection();
+		
+		String sql = "SELECT id FROM member";
+		
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			ResultSet rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				if(rs.getString("id").equals(id)) {
+					return true;
+				}
+			}
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return false;
 	}
+	
 	
 }
