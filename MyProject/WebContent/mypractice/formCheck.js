@@ -41,10 +41,3 @@ function joinCheck(obj){
 	}
 	return true;
 }
-
-function passCheck(obj){
-if(password=check)
-	$(function(){
-	        $('#change_text').text('P/w same');
-	    });
-}

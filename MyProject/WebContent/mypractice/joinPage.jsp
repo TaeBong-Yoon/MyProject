@@ -11,24 +11,25 @@
 	<form action="joinOK.jsp" method="post" onsubmit="return joinCheck(this)">
 		<input type="hidden" name="ip" value="<%=request.getRemoteAddr()%>"/>
 		
-		<table width="400" align="center">
+		<table width="550" align="center">
 			<tr><th colspan="2"><h2>Sign Up</h2></th></tr>
 			
 			<tr>
 				<td width="200" align="center">ID</td>
-				<td width="200" align="center"><input type="text" name="id"></td>
+				<td width="200" align="center"><input type="text" name="id""></td>
+				<td><input type="button" value="ID Check" onclick="idCheck()"></td>
+				 
 			</tr>
 			
 			<tr>
 				<td width="200" align="center">Password</td>
-				<td width="200" align="center"><input type="password" name="password"></td>
+				<td width="200" align="center"><input type="password" name="password" id="pw" onchange="passCheck()"></td>
 			</tr>
 			
 			<tr>
 				<td width="200" align="center">P/W Check</td>
-				<td width="200" align="center"><input type="password" name="check">
-				<p id="change_text">Input Password</p>
-				</td>
+				<td width="200" align="center"><input type="password" name="check" id="pwCheck" onchange="passCheck()"></td>
+				<td width="200"><span id="sametext"></span></td>
 			</tr>
 			
 			<tr>
@@ -48,6 +49,21 @@
 		</table>
 	
 	</form>
+	 <script>
+		function idCheck() {
+			window.open("idCheckForm.jsp","ID Check","width=300, height=350");
+		}
 
+		function passCheck(obj){
+			var pw = document.getElementById('pw').value;
+			var pwcheck = document.getElementById('pwCheck').value;
+			if(pw==pwcheck){
+				document.getElementById('sametext').innerHTML = "P/W same.";
+			} else {
+				document.getElementById('sametext').innerHTML = "P/W Not same.";
+			}
+		}
+
+	  </script>
 </body>
 </html>
