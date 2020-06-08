@@ -16,7 +16,7 @@
 			
 			<tr>
 				<td width="200" align="center">ID</td>
-				<td width="200" align="center"><input type="text" name="id""></td>
+				<td width="200" align="center"><input type="text" name="id" id="id" readonly></td>
 				<td><input type="button" value="ID Check" onclick="idCheck()"></td>
 				 
 			</tr>
@@ -51,7 +51,7 @@
 	</form>
 	 <script>
 		function idCheck() {
-			window.open("idCheckForm.jsp","ID Check","width=300, height=350");
+			window.open("idCheckForm.jsp","ID Check","width=600, height=350");
 		}
 
 		function passCheck(obj){
