@@ -19,12 +19,6 @@ String name = request.getParameter("name");
 int age =Integer.parseInt(request.getParameter("age"));
 String ip = request.getParameter("ip");
 
-if(loginCheck.check(id)){
-	out.println("<script>");
-	out.println("alert('There is same ID already exists. Choose another ID')");
-	out.println("location.href='joinPage.jsp'");
-	out.println("</script>");
-}else{
 %>
 
 <%
@@ -49,7 +43,6 @@ out.println("<script>");
 out.println("alert('Sign Up Success!')");
 out.println("location.href='main.jsp'");
 out.println("</script>");
-}
 
 %>
 

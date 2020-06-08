@@ -18,6 +18,8 @@ String name;
 int point;
 int age;
 
+String password;
+
 Connection conn = DBUtil.getMySQLConnection();
 String sql = "SELECT * FROM member WHERE id = ?";
 
@@ -29,9 +31,15 @@ name = rs.getString("name");
 age = rs.getInt("age");
 point = rs.getInt("point");
 
+password=rs.getString("password");
+
 DBUtil.close(rs);
 DBUtil.close(pstmt);
 DBUtil.close(conn);
+
+System.out.println(id);
+System.out.println(password);
+System.out.println(age);
 
 %>
 <h3>Welcome! ID : <%=id%></h3>

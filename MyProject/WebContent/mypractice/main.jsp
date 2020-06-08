@@ -46,12 +46,10 @@ if(login != null && login.equals("yes")){
 %>
 <!-- 
 현재 추가해야 할 부분
-1. id 중복체크 버튼 만들기!
 2. 회원 탈퇴 기능 만들기!
  - DELETE FROM `mydb`.`member` WHERE (`idx` = '9') and (`id` = 'pqgyt');
  - 인덱스 말고 id만 찾아서 삭제..?
 3. 회원 정보 수정 만들기!
-4. 비밀번호 다시입력창? 만들기!
 
  -->
 
