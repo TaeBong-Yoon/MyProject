@@ -15,8 +15,8 @@
 request.setCharacterEncoding("UTF-8");
 Connection conn = DBUtil.getMySQLConnection();
 String id =(String)session.getAttribute("id");
-String password = request.getParameter("password");
-String age =request.getParameter("age");
+String password = (request.getParameter("password"));
+int age = Integer.parseInt(request.getParameter("age"));
 
 
 //String sql = "UPDATE member SET password = ?, age = ? WHERE id= ?";
@@ -25,8 +25,9 @@ String sql = "UPDATE `mydb`.`member` SET `password` = ?, `age` = ? WHERE `id` = 
 
 PreparedStatement pstmt = conn.prepareStatement(sql);
 pstmt.setString(1,password);
-pstmt.setString(2,age);
+pstmt.setInt(2,age);
 pstmt.setString(3,id);
+pstmt.executeUpdate();
 
 DBUtil.close(pstmt);
 DBUtil.close(conn);

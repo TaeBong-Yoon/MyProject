@@ -49,7 +49,6 @@ if(login != null && login.equals("yes")){
 2. 회원 탈퇴 기능 만들기!
  - DELETE FROM `mydb`.`member` WHERE (`idx` = '9') and (`id` = 'pqgyt');
  - 인덱스 말고 id만 찾아서 삭제..?
-3. 회원 정보 수정 만들기!
 
  -->
 
