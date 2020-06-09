@@ -7,54 +7,37 @@ import java.sql.SQLException;
 
 public class loginCheck {
 
-	public static int pass(String id, String password) {
-		String pass;
-		
-		Connection conn = DBUtil.getMySQLConnection();
-		
-		String sql = "SELECT * FROM member WHERE id = ?";
+	//0-로그인 성공
+	//1-비밀번호가 틀린경우
+	//2-아이디가 없는경우
+	
+	public static int checkRequest(String id, String password) {
+		String dbpass;
+		int result = 1;
 		try {
+			Connection conn = DBUtil.getMySQLConnection();
+			String sql = "SELECT password FROM member WHERE id=?";
 			PreparedStatement pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1,id);
+			pstmt.setString(1, id);
 			ResultSet rs = pstmt.executeQuery();
-			rs.next();
-			pass = rs.getString("password");
-			DBUtil.close(rs);
-			DBUtil.close(pstmt);
-			DBUtil.close(conn);
-			if(pass.equals(password)) {
-				return 1;
-			} else if(!password.equals(pass)){
-				return 0;
+
+			if (rs.next()) {
+				dbpass = rs.getString("password");
+				if (dbpass.equals(password)) {
+					result = 0;
+				} else {
+					result = 1;
+				}
+			} else {
+				result = 2;
 			}
+			rs.close();
+			pstmt.close();
+			conn.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return 2;
+		return result;
 	}
-	
-	public static boolean check(String id) {
-		Connection conn = DBUtil.getMySQLConnection();
-		
-		String sql = "SELECT id FROM member";
-		
-		try {
-			PreparedStatement pstmt = conn.prepareStatement(sql);
-			ResultSet rs = pstmt.executeQuery();
-			
-			while(rs.next()) {
-				if(rs.getString("id").equals(id)) {
-					return true;
-				}
-			}
-			DBUtil.close(rs);
-			DBUtil.close(pstmt);
-			DBUtil.close(conn);
-		}catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return false;
-	}
-	
-	
+
 }

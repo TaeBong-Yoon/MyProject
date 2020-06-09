@@ -13,9 +13,9 @@
 <body>
 <!--
 추가해야할 기능
-1. 비밀번호 한번 더 입력 후 수정가능
-2. id, 이름은 수정 불가.
-3. 비밀번호 수정시 재입력 추가
+1. 비밀번호 한번 더 입력 후 수정가능 - 회원탈퇴 기능에 추가
+2. id, 이름은 수정 불가. - 끝
+3. 비밀번호 수정시 재입력 추가 - 끝
  -->
  
  <%
@@ -40,7 +40,7 @@ DBUtil.close(pstmt);
 DBUtil.close(conn);
 
 %>
-<form action="test.jsp" method="post">
+<form action="modify_OK.jsp" method="post">
 <h3>Modify user information</h3>
 <table>
 <tr>

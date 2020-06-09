@@ -13,7 +13,7 @@ public class DBUtil {
 	
 	public static Connection getMySQLConnection() {
 		Connection con = null;
-		
+		//https://developmentnotepad.tistory.com/entry/JDBC-%EC%82%AC%EC%9A%A9-%EC%8B%9C-%EB%B0%9C%EC%83%9D%ED%95%98%EB%8A%94-%EC%98%A4%EB%A5%98
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			String url = "jdbc:mysql://localhost:3306/mydb?useUnicode=true&characterEncoding=UTF-8";

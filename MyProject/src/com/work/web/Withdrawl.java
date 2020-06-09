@@ -43,11 +43,9 @@ public class Withdrawl {
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				dbpass = rs.getString("password");
-				System.out.println("dbpass : "+dbpass);
 				if (dbpass.equals(password)) {
 					String delsql = "DELETE FROM member WHERE id=?";
 					pstmt = conn.prepareStatement(delsql);
-					System.out.println("id : "+id);
 					pstmt.setString(1, id);
 					pstmt.executeUpdate();//https://ammff.tistory.com/96
 					result = true;
