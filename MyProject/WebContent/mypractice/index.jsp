@@ -1,4 +1,3 @@
-<%@page import="com.work.web.loginCheck"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -6,11 +5,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript" src="formCheck.js"></script>
+<script type="text/javascript" src="sign/formCheck.js"></script>
 </head>
 <body>
 	<h1>WelCome! : )</h1>
-	<form action="main.jsp" method="POST" onsubmit="return loginCheck(this)">
+	<form action="sign/main.jsp" method="POST" onsubmit="return loginCheck(this)">
 		<table>
 			<tr>
 				<th colspan="2"><h3>Sign In</h3></th>
@@ -31,8 +30,8 @@
 			</tr>
 		</table>
 	</form>
-	<input type="button" value="Sign Up" onclick="location.href='joinPage.jsp'" />
-	<input type="button" value="Find ID" onclick="location.href='findID.jsp'" />
-	<input type="button" value="Find P/W" onclick="location.href='findPW.jsp'" />	
+	<input type="button" value="Sign Up" onclick="location.href='sign/joinPage.jsp'" />
+	<input type="button" value="Find ID" onclick="location.href='find/findID.jsp'" />
+	<input type="button" value="Find P/W" onclick="location.href='find/findPW.jsp'" />	
 </body>
 </html>

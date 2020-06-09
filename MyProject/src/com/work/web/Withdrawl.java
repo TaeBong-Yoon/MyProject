@@ -7,24 +7,7 @@ import java.sql.SQLException;
 
 public class Withdrawl {
 
-//	public static void modifyUserInfo(String id) {
-//		Connection conn = DBUtil.getMySQLConnection();
-//		
-//		String sql = "SELECT id FROM member";
-//		
-//		try {
-//			PreparedStatement pstmt = conn.prepareStatement(sql);
-//			ResultSet rs = pstmt.executeQuery();
-//			
-//			while(rs.next()) {
-//				if(rs.getString("id").equals(id)) {
-//				}
-//			}
-//		}catch (SQLException e) {
-//			e.printStackTrace();
-//		}
-//	}
-
+	//회원 삭제 - MemberDAO로 옮길수 있도록 노력!
 	public static boolean deleteUserInfo(String id, String password) {
 		boolean result = false;
 		String dbpass = "";

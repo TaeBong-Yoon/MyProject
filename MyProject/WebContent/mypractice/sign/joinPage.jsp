@@ -43,6 +43,11 @@
 			</tr>
 			
 			<tr>
+				<td width="200" align="center">Phone</td>
+				<td width="200" align="center"><input type="text" name="phone"></td>
+			</tr>
+			
+			<tr>
 				<td colspan="2" align="center"><input type="submit" value="Sign Up"></td>
 			</tr>
 			

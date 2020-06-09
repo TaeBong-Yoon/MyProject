@@ -1,4 +1,4 @@
-<%@page import="com.work.web.loginCheck"%>
+<%@page import="com.work.web.MemberDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -10,8 +10,8 @@
 <body>
 <%
 String id = request.getParameter("id");
-boolean check = loginCheck.check(id);
-out.println("Your ID : <strong>" + id + "</strong");
+boolean check = MemberDAO.checkID(id);
+out.println("Your ID : <strong>" + id + "</strong>");
 if(check==false){
 	out.println("<p> is Available ID</p>");
 	out.println("<a href='javascript:apply(\"" + id + "\")'>[Apply]</a>");
@@ -33,7 +33,5 @@ function apply(id){
 <a href="javascript:history.back()">[Try Again]</a>
 &nbsp; &nbsp; 
 <a href="javascript:window.close()">[Close]</a>
-
-
 </body>
 </html>

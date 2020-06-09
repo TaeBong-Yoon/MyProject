@@ -1,4 +1,4 @@
-<%@page import="com.work.web.loginCheck"%>
+<%@page import="com.work.web.MemberDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -16,14 +16,14 @@
 
 	String login = (String) session.getAttribute("login");
 	
-	if (loginCheck.checkRequest(id, password) == 0) {
+	if (MemberDAO.checkRequest(id, password) == 0) {
 		session.setAttribute("id", id);
 		session.setAttribute("login", "yes");
 		out.println("<script>");
 		out.println("alert('Sign In Successfully!')");
 		out.println("location.href='main_OK.jsp'");
 		out.println("</script>");	
-	} else if (loginCheck.checkRequest(id, password) == 1) {
+	} else if (MemberDAO.checkRequest(id, password) == 1) {
 		session.setAttribute("login", "no");
 		session.removeAttribute("id");
 		session.removeAttribute("login");
@@ -31,7 +31,7 @@
 		out.println("alert('Try again!')");
 		out.println("location.href='index.jsp'");
 		out.println("</script>");
-	} else if (loginCheck.checkRequest(id, password) == 2) {
+	} else if (MemberDAO.checkRequest(id, password) == 2) {
 		session.removeAttribute("id");
 		session.removeAttribute("login");
 		out.println("<script>");
@@ -56,7 +56,8 @@
  - 인덱스 말고 id만 찾아서 삭제..?
 3. 회원 정보 수정 만들기! - 완료
 4. 아이디 찾기
- - 테이블에 전화번호를 추가해서 이름과 전화번호로 비교
+ - 테이블에 전화번호를 추가 - 완료
+ - 이름과 전화번호로 비교
 5. 비밀번호 찾기
  - 아이디와 전화번호(이름)으로 비교
  -->

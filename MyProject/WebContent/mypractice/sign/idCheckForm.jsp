@@ -1,4 +1,4 @@
-<%@page import="com.work.web.loginCheck"%>
+<%@page import="com.work.web.MemberDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
