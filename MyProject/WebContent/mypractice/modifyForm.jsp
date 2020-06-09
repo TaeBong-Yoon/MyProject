@@ -1,6 +1,6 @@
+<%@page import="com.work.web.DBUtil"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
-<%@page import="com.work.web.DBUtil"%>
 <%@page import="java.sql.Connection"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -40,7 +40,7 @@ DBUtil.close(pstmt);
 DBUtil.close(conn);
 
 %>
-<form action="modify_OK.jsp" method="post">
+<form action="test.jsp" method="post">
 <h3>Modify user information</h3>
 <table>
 <tr>
@@ -65,10 +65,13 @@ DBUtil.close(conn);
 <td align="center"><input type="text" placeholder="User Age" name="age"></td>
 </tr>
 <tr>
-<td colspan="2" align="center"><input type="submit" value="Complete"></td>
+<td colspan="2" align="center"><input type="submit" value="Complete" name="action"></td>
 </tr>
-
+<tr>
+<td colspan="2" align="center"><input type="button" value="WithDrawl" onclick="location.href='withDrawl.jsp'"/></td>
+</tr>
 </table>
+
 </form>
 	<script>
 		function passCheck(obj){

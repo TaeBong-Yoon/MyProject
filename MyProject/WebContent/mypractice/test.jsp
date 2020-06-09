@@ -14,12 +14,16 @@
 <%
 request.setCharacterEncoding("UTF-8");
 Connection conn = DBUtil.getMySQLConnection();
+String action = request.getParameter("action");
 String id =(String)session.getAttribute("id");
-String password = (request.getParameter("password"));
-int age = Integer.parseInt(request.getParameter("age"));
+//String password = (request.getParameter("password"));
+//int age = Integer.parseInt(request.getParameter("age"));
 
-String sql = "UPDATE `mydb`.`member` SET `password` = ?, `age` = ? WHERE `id` = ?";
+//String sql = "SELECT * FROM mydb";
 
+System.out.println(action);
+System.out.println(id);
+/*
 PreparedStatement pstmt = conn.prepareStatement(sql);
 pstmt.setString(1,password);
 pstmt.setInt(2,age);
@@ -29,13 +33,14 @@ pstmt.executeUpdate();
 DBUtil.close(pstmt);
 DBUtil.close(conn);
 
-System.out.println(id + "'s password and age change to " +password+","+age);
+System.out.println(id);
+System.out.println(password);
+System.out.println(age);
 
 out.println("<script>");
 out.println("alert('Modify Successfully!')");
 out.println("location.href='main_OK.jsp'");
-out.println("</script>");
-
+out.println("</script>");*/
 %>
 </body>
 </html>

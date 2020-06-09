@@ -47,6 +47,9 @@ public class loginCheck {
 					return true;
 				}
 			}
+			DBUtil.close(rs);
+			DBUtil.close(pstmt);
+			DBUtil.close(conn);
 		}catch (SQLException e) {
 			e.printStackTrace();
 		}
