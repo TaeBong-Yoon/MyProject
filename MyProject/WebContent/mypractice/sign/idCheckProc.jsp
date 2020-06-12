@@ -8,13 +8,15 @@
 <title>Insert title here</title>
 </head>
 <body>
+<!-- 하이퍼링크로 사용할때 -->
+<!-- out.println("<a href='javascript:apply(\"" + id + "\")'>[Apply]</a>"); -->
 <%
 String id = request.getParameter("id");
 boolean check = MemberDAO.checkID(id);
 out.println("Your ID : <strong>" + id + "</strong>");
 if(check==false){
 	out.println("<p> is Available ID</p>");
-	out.println("<a href='javascript:apply(\"" + id + "\")'>[Apply]</a>");
+	out.println("<input type='button' value='Apply' onclick='javascript:apply(\"" + id + "\")'>");
 %>
 
 <script>
@@ -30,8 +32,7 @@ function apply(id){
 }
 %>
 <hr> 
-<a href="javascript:history.back()">[Try Again]</a>
-&nbsp; &nbsp; 
-<a href="javascript:window.close()">[Close]</a>
+<input type="button" value="Try Again" onclick="javascript:history.back()">
+<input type="button" value="Cancel" onclick="javascript:window.close()">
 </body>
 </html>

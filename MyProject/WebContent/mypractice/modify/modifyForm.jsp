@@ -1,7 +1,4 @@
-<%@page import="com.work.web.DBUtil"%>
-<%@page import="java.sql.ResultSet"%>
-<%@page import="java.sql.PreparedStatement"%>
-<%@page import="java.sql.Connection"%>
+<%@page import="com.work.web.MemberDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -11,34 +8,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-<!--
-추가해야할 기능
-1. 비밀번호 한번 더 입력 후 수정가능 - 회원탈퇴 기능에 추가
-2. id, 이름은 수정 불가. - 끝
-3. 비밀번호 수정시 재입력 추가 - 끝
- -->
  
- <%
-String id =(String)session.getAttribute("id");
-String name;
-int point;
-int age;
-
-Connection conn = DBUtil.getMySQLConnection();
-String sql = "SELECT * FROM member WHERE id = ?;";
-
-PreparedStatement pstmt = conn.prepareStatement(sql);
-pstmt.setString(1,id);
-ResultSet rs = pstmt.executeQuery();
-rs.next();
-name = rs.getString("name");
-age = rs.getInt("age");
-point = rs.getInt("point");
-
-DBUtil.close(rs);
-DBUtil.close(pstmt);
-DBUtil.close(conn);
-
+<%
+String id =(String)session.getAttribute("signedUser");
+String name = MemberDAO.nameViewForModify(id);
 %>
 <form action="modify_OK.jsp" method="post">
 <h3>Modify user information</h3>
@@ -65,7 +38,11 @@ DBUtil.close(conn);
 <td align="center"><input type="text" placeholder="User Age" name="age"></td>
 </tr>
 <tr>
-<td colspan="2" align="center"><input type="submit" value="Complete" name="action"></td>
+<td align="center">Phone</td>
+<td align="center"><input type="text" placeholder="Phone" name="phone"></td>
+</tr>
+<tr>
+<td colspan="2" align="center"><input type="submit" value="Complete"></td>
 </tr>
 <tr>
 <td colspan="2" align="center"><input type="button" value="WithDrawl" onclick="location.href='withDrawl.jsp'"/></td>

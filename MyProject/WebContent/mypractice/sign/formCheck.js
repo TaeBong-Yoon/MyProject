@@ -39,5 +39,12 @@ function joinCheck(obj){
 		obj.age.focus();
 		return false;
 	}
+	if(!obj.phone.value || obj.phone.trim().length == 0){
+		alert("Input phone number !")
+		obj.phone.value="";
+		obj.phone.focus();
+		return false;
+	}
 	return true;
 }
+

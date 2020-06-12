@@ -1,66 +1,73 @@
-<%@page import="com.work.web.MemberDAO"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="com.work.web.DBUtil"%>
+<%@page import="java.sql.Connection"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript" src="formCheck.js"></script>
 </head>
 <body>
-	<%
-	request.setCharacterEncoding("UTF-8");
-	String id = request.getParameter("id");
-	String password = request.getParameter("password");
+<h1>HELLO!!</h1>
+<%
+if(session.getAttribute("signedUser") == null){
+	System.out.println("access deny.");
+	response.sendRedirect("../index.jsp");
+} else {
 
-	String login = (String) session.getAttribute("login");
-	
-	if (MemberDAO.checkRequest(id, password) == 0) {
-		session.setAttribute("id", id);
-		session.setAttribute("login", "yes");
-		out.println("<script>");
-		out.println("alert('Sign In Successfully!')");
-		out.println("location.href='main_OK.jsp'");
-		out.println("</script>");	
-	} else if (MemberDAO.checkRequest(id, password) == 1) {
-		session.setAttribute("login", "no");
-		session.removeAttribute("id");
-		session.removeAttribute("login");
-		out.println("<script>");
-		out.println("alert('Try again!')");
-		out.println("location.href='index.jsp'");
-		out.println("</script>");
-	} else if (MemberDAO.checkRequest(id, password) == 2) {
-		session.removeAttribute("id");
-		session.removeAttribute("login");
-		out.println("<script>");
-		out.println("alert('Check your ID again')");
-		out.println("location.href='index.jsp'");
-		out.println("</script>");
-	}
+String id =(String)session.getAttribute("signedUser");
+String name;
+int point;
+int age;
+String phone;
 
-	String logout = request.getParameter("logout");
+Connection conn = DBUtil.getMySQLConnection();
+String sql = "SELECT * FROM member WHERE id = ?";
 
-	if (logout != null && logout.equals("yes")) {
-		session.removeAttribute("id");
-		session.removeAttribute("login");
-	}
-	%>
-	<!-- 
-현재 추가해야 할 부분
-1. 아이디가 없을 경우 alert 창 띄우기 - 완료
-1-1. 비밀번호가 틀릴경우 alert - 완료
-2. 회원 탈퇴 기능 만들기! - 완료
- - DELETE FROM `mydb`.`member` WHERE (`idx` = '9') and (`id` = 'pqgyt');
- - 인덱스 말고 id만 찾아서 삭제..?
-3. 회원 정보 수정 만들기! - 완료
-4. 아이디 찾기
- - 테이블에 전화번호를 추가 - 완료
- - 이름과 전화번호로 비교
-5. 비밀번호 찾기
- - 아이디와 전화번호(이름)으로 비교
- -->
+PreparedStatement pstmt = conn.prepareStatement(sql);
+pstmt.setString(1,id);
+ResultSet rs = pstmt.executeQuery();
+rs.next();
+name = rs.getString("name");
+age = rs.getInt("age");
+point = rs.getInt("point");
+phone = rs.getString("phone");
 
+DBUtil.close(rs);
+DBUtil.close(pstmt);
+DBUtil.close(conn);
+
+%>
+<h3>Welcome! ID : <%=id%></h3>
+<table width="300">
+	<tr><th colspan="2">User Information</th></tr>
+	<tr>
+		<td align="center">Name</td>
+		<td align="center"><%=name%></td>
+	</tr>
+	<tr>
+		<td align="center">Age</td>
+		<td align="center"><%=age%></td>
+	</tr>
+	<tr>
+		<td align="center">Point</td>
+		<td align="center"><%=point%></td>
+	</tr>
+	<tr>
+		<td align="center">Phone</td>
+		<td align="center"><%=phone%></td>
+	</tr>
+	<tr>
+		<td align="center"><input type="button" value="Modify user info" onclick="location.href='../modify/modifyForm.jsp'"/></td>
+
+		<td align="center"><input type="button" value="Sign out" onclick="location.href='signOut.jsp'"/></td>
+	</tr>
+</table>
+<%
+}
+%>
 </body>
 </html>

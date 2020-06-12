@@ -18,7 +18,6 @@
 				<td width="200" align="center">ID</td>
 				<td width="200" align="center"><input type="text" name="id" id="id" readonly></td>
 				<td><input type="button" value="ID Check" onclick="idCheck()"></td>
-				 
 			</tr>
 			
 			<tr>
@@ -68,7 +67,6 @@
 				document.getElementById('sametext').innerHTML = "P/W Not same.";
 			}
 		}
-
 	  </script>
 </body>
 </html>

@@ -20,7 +20,7 @@
   </tr>
   <tr>
     <td><input type="submit" value="Done"></td>
-    <td><input type="button" value="Go to Main Page" onclick="location.href='main_OK.jsp'"></td>
+    <td><input type="button" value="Go to Main Page" onclick="location.href='../sign/main.jsp'"></td>
   </tr>
 </table>
 </form>
